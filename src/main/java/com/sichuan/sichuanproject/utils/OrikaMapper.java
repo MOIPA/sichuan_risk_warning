@@ -1,9 +1,11 @@
 package com.sichuan.sichuanproject.utils;
 
+import com.sichuan.sichuanproject.domain.Menu;
 import com.sichuan.sichuanproject.domain.Organization;
 import com.sichuan.sichuanproject.domain.WarningModel;
 import com.sichuan.sichuanproject.dto.WarningModelDTO;
 import com.sichuan.sichuanproject.form.WarningModelForm;
+import com.sichuan.sichuanproject.vo.MenuInfoVO;
 import com.sichuan.sichuanproject.vo.OrganizationVO;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
 import ma.glasnost.orika.MapperFacade;
@@ -24,6 +26,8 @@ public class OrikaMapper {
         mapperFactory.classMap(OrganizationVO.class, Organization.class);
         mapperFactory.classMap(WarningModel.class, WarningModelForm.class);
         mapperFactory.classMap(WarningModelDTO.class, WarningModelVO.class).field("id", "warningModelId")
+                .byDefault().register();
+        mapperFactory.classMap(Menu.class, MenuInfoVO.class).field("parentMenu", "parentMenuId")
                 .byDefault().register();
 
     }

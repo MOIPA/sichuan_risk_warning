@@ -6,6 +6,7 @@ import com.sichuan.sichuanproject.domain.*;
 import com.sichuan.sichuanproject.dto.*;
 import com.sichuan.sichuanproject.mapper.*;
 import com.sichuan.sichuanproject.service.UserService;
+import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.MenuInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -18,6 +19,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author
@@ -61,7 +63,7 @@ public class UserServiceImpl implements UserService {
             Integer num = 0;
 
             for (UserDTO userDTO : userDTOList) {
-                User user = new User();
+                User user;
                 user = userMapper.getUserById(userDTO.getUserId());
                 if (user == null) {
                     //用户不存在，新增用户
@@ -138,7 +140,7 @@ public class UserServiceImpl implements UserService {
             Integer num = 0;
 
             for (MenuInfoDTO menuInfoDTO : menuInfoDTOList) {
-                Menu menu = new Menu();
+                Menu menu;
                 menu = menuMapper.getMenuById(menuInfoDTO.getMenuId());
                 if (menu == null) {
                     //菜单不存在，新增菜单
@@ -284,18 +286,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<MenuInfoVO> getMenuInfoByUser(Long userId, Long orgId) {
-        List<MenuInfoVO> menuInfoVOList = new ArrayList<>();
-        List<Menu> menuList = userMapper.getMenuByUserId(userId, orgId);
-        menuList.forEach((e) ->{
-            MenuInfoVO menuInfoVO = new MenuInfoVO();
-            menuInfoVO.setMenuId(e.getMenuId());
-            menuInfoVO.setMenuName(e.getMenuName());
-            menuInfoVO.setParentMenuId(e.getParentMenu());
+        return userMapper.getMenuByUserId(userId, orgId)
+                .stream().map(e -> (MenuInfoVO) OrikaMapper.map(e, MenuInfoVO.class)).collect(Collectors.toList());
 
-            menuInfoVOList.add(menuInfoVO);
-        });
-
-        return menuInfoVOList;
     }
 
     private String decrypt(String secret, String salt, String ciphertext ) throws Exception {
@@ -312,7 +305,6 @@ public class UserServiceImpl implements UserService {
         cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
         byte[] plainTextBytes = cipher.doFinal(base64Decrypted);
 
-        String plainText = new String(plainTextBytes, "utf-8");
-        return plainText;
+        return new String(plainTextBytes, "utf-8");
     }
 }
