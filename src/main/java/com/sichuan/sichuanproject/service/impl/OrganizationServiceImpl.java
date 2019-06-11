@@ -5,6 +5,7 @@ import com.sichuan.sichuanproject.domain.Organization;
 import com.sichuan.sichuanproject.dto.OrganizationInfoDTO;
 import com.sichuan.sichuanproject.mapper.OrganizationMapper;
 import com.sichuan.sichuanproject.service.OrganizationService;
+import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.OrganizationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -66,12 +67,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     public List<OrganizationVO> getOrganizationInfo() {
         List<OrganizationVO> organizationVOList = new ArrayList<>();
         List<Organization> organizationList = organizationMapper.getOrganizationInfo();
-        organizationList.forEach((e) ->{
-            OrganizationVO organizationVO = new OrganizationVO();
-            organizationVO.setOrgCode(e.getOrgCode());
-            organizationVO.setOrgName(e.getOrgName());
-            organizationVOList.add(organizationVO);
-        });
+
+        organizationList.forEach(e -> organizationVOList.add((OrganizationVO) OrikaMapper.map(e, OrganizationVO.class)));
 
         return organizationVOList;
     }
@@ -80,12 +77,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     public List<OrganizationVO> getOrganizationInfoByName(String name) {
         List<OrganizationVO> organizationVOList = new ArrayList<>();
         List<Organization> organizationList = organizationMapper.getOrganizationInfoByName(name);
-        organizationList.forEach((e) ->{
-            OrganizationVO organizationVO = new OrganizationVO();
-            organizationVO.setOrgCode(e.getOrgCode());
-            organizationVO.setOrgName(e.getOrgName());
-            organizationVOList.add(organizationVO);
-        });
+
+        organizationList.forEach(e -> organizationVOList.add((OrganizationVO) OrikaMapper.map(e, OrganizationVO.class)));
 
         return organizationVOList;
     }

@@ -50,9 +50,8 @@ public class UserController {
             Long userId = Long.valueOf(userInfoDTO.getUuid());
             Long orgId = Long.valueOf(userInfoDTO.getOrgId());
 
-            List<MenuInfoVO> menuInfoVOList = userService.getMenuInfoByUser(userId, orgId);
+            return userService.getMenuInfoByUser(userId, orgId);
 
-            return menuInfoVOList;
         }catch (Exception e) {
             log.error(e.getMessage());
             return new ArrayList<>();

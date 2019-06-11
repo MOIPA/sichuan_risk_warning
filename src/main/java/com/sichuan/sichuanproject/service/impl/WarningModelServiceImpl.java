@@ -8,6 +8,7 @@ import com.sichuan.sichuanproject.form.ModifyWarningModelForm;
 import com.sichuan.sichuanproject.form.WarningModelForm;
 import com.sichuan.sichuanproject.mapper.WarningModelMapper;
 import com.sichuan.sichuanproject.service.WarningModelService;
+import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author
@@ -27,28 +29,19 @@ public class WarningModelServiceImpl implements WarningModelService {
 
     @Override
     public Integer addWarningModel(WarningModelForm warningModelForm) {
-        WarningModel warningModel = new WarningModel();
-        warningModel = warningModel.warningModelByForm(warningModelForm);
+        WarningModel warningModel = (WarningModel) OrikaMapper.map(warningModelForm, WarningModel.class);
+
         warningModel.setId(null);
         warningModel.setCreateTime(new Timestamp(System.currentTimeMillis()));
         warningModel.setStatus(WarningModelStatus.UNDER_REVIEW.value());
 
-        Integer result = warningModelMapper.addWarningModel(warningModel);
-        return result;
+        return warningModelMapper.addWarningModel(warningModel);
     }
 
     @Override
     public List<WarningModelVO> getWarningModel() {
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModels();
-        List<WarningModelVO> warningModelVOList = new ArrayList<>();
-
-        warningModelDTOList.forEach((e) ->{
-            WarningModelVO warningModelVO = new WarningModelVO();
-            warningModelVO = warningModelVO.warningModelVOByDTO(e);
-            warningModelVOList.add(warningModelVO);
-        });
-
-        return warningModelVOList;
+        return warningModelMapper.getWarningModels()
+                .stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
     }
 
     @Override

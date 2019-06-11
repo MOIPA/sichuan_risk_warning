@@ -32,7 +32,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskClassifyDTO> getTaskClassify() {
-        List<TaskClassifyDTO> taskClassifyDTOList = new ArrayList<>();
+        List<TaskClassifyDTO> taskClassifyDTOList;
         TaskClassifyInfoDTO taskClassifyInfoDTO = restTemplate.getForObject(taskServiceUrl + "task/classify", TaskClassifyInfoDTO.class);
         taskClassifyDTOList = taskClassifyInfoDTO.getResultData();
 
