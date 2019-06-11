@@ -65,7 +65,7 @@ public class WarningModelServiceImpl implements WarningModelService {
 
     @Override
     public List<WarningModelVO> getUnderReviewWarningModelByName(String name) {
-        return warningModelMapper.getUnderReviewWarningModel()
+        return warningModelMapper.getUnderReviewWarningModelByName(name)
                 .stream().map(e -> (WarningModelVO)OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
     }
 
