@@ -46,49 +46,27 @@ public class WarningModelServiceImpl implements WarningModelService {
 
     @Override
     public List<WarningModelVO> getWarningModelByName(String name) {
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModelByName(name);
-        List<WarningModelVO> warningModelVOList = new ArrayList<>();
 
-        warningModelDTOList.forEach((e) ->{
-            WarningModelVO warningModelVO = new WarningModelVO();
-            warningModelVO = warningModelVO.warningModelVOByDTO(e);
-            warningModelVOList.add(warningModelVO);
-        });
+        return warningModelMapper.getWarningModelByName(name)
+                .stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
 
-        return warningModelVOList;
     }
 
     @Override
     public Integer modifyWarningModel(ModifyWarningModelForm modifyWarningModelForm) {
-        Integer result = warningModelMapper.updateWarningModel(modifyWarningModelForm.getWarningModelId(), modifyWarningModelForm.getName(), modifyWarningModelForm.getType(), modifyWarningModelForm.getOrgCode());
-
-        return result;
+        return warningModelMapper.updateWarningModel(modifyWarningModelForm.getWarningModelId(), modifyWarningModelForm.getName(), modifyWarningModelForm.getType(), modifyWarningModelForm.getOrgCode());
     }
 
     @Override
     public List<WarningModelVO> getUnderReviewWarningModel() {
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getUnderReviewWarningModel();
-        List<WarningModelVO> warningModelVOList = new ArrayList<>();
-        warningModelDTOList.forEach((e) ->{
-            WarningModelVO warningModelVO = new WarningModelVO();
-            warningModelVO = warningModelVO.warningModelVOByDTO(e);
-            warningModelVOList.add(warningModelVO);
-        });
-
-        return warningModelVOList;
+        return warningModelMapper.getUnderReviewWarningModel()
+                .stream().map(e -> (WarningModelVO)OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
     }
 
     @Override
     public List<WarningModelVO> getUnderReviewWarningModelByName(String name) {
-        List<WarningModelVO> warningModelVOList = new ArrayList<>();
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getUnderReviewWarningModelByName(name);
-        warningModelDTOList.forEach((e) ->{
-            WarningModelVO warningModelVO = new WarningModelVO();
-            warningModelVO = warningModelVO.warningModelVOByDTO(e);
-            warningModelVOList.add(warningModelVO);
-        });
-
-        return warningModelVOList;
+        return warningModelMapper.getUnderReviewWarningModel()
+                .stream().map(e -> (WarningModelVO)OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
     }
 
     @Override
