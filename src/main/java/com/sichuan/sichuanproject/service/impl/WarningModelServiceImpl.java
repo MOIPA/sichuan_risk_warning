@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author ShenGao
+ * @author shengao
  */
 @Component
 public class WarningModelServiceImpl implements WarningModelService {
