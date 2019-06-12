@@ -1,5 +1,6 @@
 package com.sichuan.sichuanproject.service;
 
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.form.ApprovalWarningModelForm;
 import com.sichuan.sichuanproject.form.ModifyWarningModelForm;
 import com.sichuan.sichuanproject.form.WarningModelForm;
@@ -26,9 +27,11 @@ public interface WarningModelService {
     /**
      * 查找风险预警模型
      *
+     * @param pageNum
+     * @param pageSize
      * @return
      */
-    List<WarningModelVO> getWarningModel();
+    PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize);
 
     /**
      * 按名称搜索风险预警模型

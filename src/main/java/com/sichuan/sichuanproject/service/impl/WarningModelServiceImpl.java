@@ -1,5 +1,8 @@
 package com.sichuan.sichuanproject.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.config.WarningModelStatus;
 import com.sichuan.sichuanproject.domain.WarningModel;
 import com.sichuan.sichuanproject.dto.WarningModelDTO;
@@ -39,9 +42,19 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public List<WarningModelVO> getWarningModel() {
-        return warningModelMapper.getWarningModels()
-                .stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+    public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize,true);
+        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModels();
+        if (warningModelDTOList instanceof Page) {
+            System.out.println("true1");
+        }
+        List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) ->(WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+        if (warningModelVOList instanceof Page) {
+            System.out.println("true2");
+        }
+        PageInfo<WarningModelVO> warningModelVOPageInfo = new PageInfo<>(warningModelVOList);
+
+        return warningModelVOPageInfo;
     }
 
     @Override

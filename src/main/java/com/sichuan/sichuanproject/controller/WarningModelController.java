@@ -1,5 +1,6 @@
 package com.sichuan.sichuanproject.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.form.ApprovalWarningModelForm;
 import com.sichuan.sichuanproject.form.ModifyWarningModelForm;
 import com.sichuan.sichuanproject.form.WarningModelForm;
@@ -27,8 +28,8 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get", method = RequestMethod.GET)
-    public List<WarningModelVO> getWarningModels() {
-        return warningModelService.getWarningModel();
+    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getWarningModel(pageNum, pageSize);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/name", method = RequestMethod.GET)
