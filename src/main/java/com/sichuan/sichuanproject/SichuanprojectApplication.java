@@ -18,18 +18,6 @@ public class SichuanprojectApplication {
         return new RestTemplate();
     }
 
-    @Bean
-    public PageHelper pageHelper(){
-        PageHelper pageHelper = new PageHelper();
-        Properties properties = new Properties();
-        properties.setProperty("offsetAsPageNum","true");
-        properties.setProperty("rowBoundsWithCount","true");
-        properties.setProperty("reasonable","true");
-        properties.setProperty("dialect","mysql");
-        pageHelper.setProperties(properties);
-        return pageHelper;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(SichuanprojectApplication.class, args);
     }

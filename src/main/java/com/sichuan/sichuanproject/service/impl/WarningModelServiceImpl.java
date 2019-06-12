@@ -42,19 +42,13 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize,true);
+    public PageInfo<WarningModelVO> getWarningModel(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModels();
-        if (warningModelDTOList instanceof Page) {
-            System.out.println("true1");
-        }
+        PageInfo pageInfo = new PageInfo(warningModelDTOList);
         List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) ->(WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
-        if (warningModelVOList instanceof Page) {
-            System.out.println("true2");
-        }
-        PageInfo<WarningModelVO> warningModelVOPageInfo = new PageInfo<>(warningModelVOList);
-
-        return warningModelVOPageInfo;
+        pageInfo.setList(warningModelVOList);
+        return pageInfo;
     }
 
     @Override

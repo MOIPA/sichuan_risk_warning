@@ -31,7 +31,7 @@ public interface WarningModelService {
      * @param pageSize
      * @return
      */
-    PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize);
+    PageInfo<WarningModelVO> getWarningModel(int pageNum, int pageSize);
 
     /**
      * 按名称搜索风险预警模型

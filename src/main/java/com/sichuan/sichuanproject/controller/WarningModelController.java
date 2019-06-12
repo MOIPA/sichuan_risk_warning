@@ -28,7 +28,7 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get", method = RequestMethod.GET)
-    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") int pageNum, @RequestParam(value = "pageSize") int pageSize) {
         return warningModelService.getWarningModel(pageNum, pageSize);
     }
 
