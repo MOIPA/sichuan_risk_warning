@@ -28,13 +28,13 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get", method = RequestMethod.GET)
-    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") int pageNum, @RequestParam(value = "pageSize") int pageSize) {
+    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
         return warningModelService.getWarningModel(pageNum, pageSize);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/name", method = RequestMethod.GET)
-    public List<WarningModelVO> getWarningModelByName(@RequestParam(value = "name") String name) {
-        return warningModelService.getWarningModelByName(name);
+    public PageInfo<WarningModelVO> getWarningModelByName(@RequestParam(value = "name") String name, @RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getWarningModelByName(name, pageNum, pageSize);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/modify", method = RequestMethod.POST)
@@ -43,13 +43,13 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/under-review", method = RequestMethod.GET)
-    public List<WarningModelVO> getUnderReviewWarningModel() {
-        return warningModelService.getUnderReviewWarningModel();
+    public PageInfo<WarningModelVO> getUnderReviewWarningModel(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getUnderReviewWarningModel(pageNum, pageSize);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/under-review/name", method = RequestMethod.GET)
-    public List<WarningModelVO> getUnderReviewWarningModelByName(@RequestParam(value = "name") String name) {
-        return warningModelService.getUnderReviewWarningModelByName(name);
+    public PageInfo<WarningModelVO> getUnderReviewWarningModelByName(@RequestParam(value = "name") String name, @RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getUnderReviewWarningModelByName(name, pageNum, pageSize);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/approval", method = RequestMethod.POST)

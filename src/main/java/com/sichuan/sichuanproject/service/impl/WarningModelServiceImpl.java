@@ -42,7 +42,7 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public PageInfo<WarningModelVO> getWarningModel(int pageNum, int pageSize) {
+    public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModels();
         PageInfo pageInfo = new PageInfo(warningModelDTOList);
@@ -52,10 +52,13 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public List<WarningModelVO> getWarningModelByName(String name) {
-
-        return warningModelMapper.getWarningModelByName(name)
-                .stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+    public PageInfo<WarningModelVO> getWarningModelByName(String name, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModelByName(name);
+        PageInfo pageInfo = new PageInfo(warningModelDTOList);
+        List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) ->(WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+        pageInfo.setList(warningModelVOList);
+        return pageInfo;
 
     }
 
@@ -65,15 +68,23 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public List<WarningModelVO> getUnderReviewWarningModel() {
-        return warningModelMapper.getUnderReviewWarningModel()
-                .stream().map(e -> (WarningModelVO)OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+    public PageInfo<WarningModelVO> getUnderReviewWarningModel(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getUnderReviewWarningModel();
+        PageInfo pageInfo = new PageInfo(warningModelDTOList);
+        List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+        pageInfo.setList(warningModelVOList);
+        return pageInfo;
     }
 
     @Override
-    public List<WarningModelVO> getUnderReviewWarningModelByName(String name) {
-        return warningModelMapper.getUnderReviewWarningModelByName(name)
-                .stream().map(e -> (WarningModelVO)OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+    public PageInfo<WarningModelVO> getUnderReviewWarningModelByName(String name, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getUnderReviewWarningModelByName(name);
+        PageInfo pageInfo = new PageInfo(warningModelDTOList);
+        List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) -> (WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
+        pageInfo.setList(warningModelVOList);
+        return pageInfo;
     }
 
     @Override

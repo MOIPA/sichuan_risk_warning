@@ -31,15 +31,17 @@ public interface WarningModelService {
      * @param pageSize
      * @return
      */
-    PageInfo<WarningModelVO> getWarningModel(int pageNum, int pageSize);
+    PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize);
 
     /**
      * 按名称搜索风险预警模型
      *
      * @param name
+     * @param pageNum
+     * @param pageSize
      * @return
      */
-    List<WarningModelVO> getWarningModelByName(String name);
+    PageInfo<WarningModelVO> getWarningModelByName(String name, Integer pageNum, Integer pageSize);
 
     /**
      * 修改风险预警模型
@@ -52,17 +54,21 @@ public interface WarningModelService {
     /**
      * 查找待审批的模型
      *
+     * @param pageNum
+     * @param pageSize
      * @return
      */
-    List<WarningModelVO> getUnderReviewWarningModel();
+    PageInfo<WarningModelVO> getUnderReviewWarningModel(Integer pageNum, Integer pageSize);
 
     /**
      * 按名称查找待审批的模型
      *
      * @param name
+     * @param pageNum
+     * @param pageSize
      * @return
      */
-    List<WarningModelVO> getUnderReviewWarningModelByName(String name);
+    PageInfo<WarningModelVO> getUnderReviewWarningModelByName(String name, Integer pageNum, Integer pageSize);
 
     /**
      * 审批预警模型

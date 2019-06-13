@@ -1,5 +1,7 @@
 package com.sichuan.sichuanproject.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.domain.Task;
 import com.sichuan.sichuanproject.dto.*;
 import com.sichuan.sichuanproject.form.AddTaskForm;
@@ -69,11 +71,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getTasks() {
-        List<Task> taskList = new ArrayList<>();
-        taskList = taskMapper.getTasks();
+    public PageInfo<Task> getTasks(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Task> taskList = taskMapper.getTasks();
+        PageInfo pageInfo = new PageInfo(taskList);
 
-        return taskList;
+        return pageInfo;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.sichuan.sichuanproject.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.domain.Task;
 import com.sichuan.sichuanproject.dto.TaskClassifyDTO;
 import com.sichuan.sichuanproject.dto.TaskDetailDTO;
@@ -37,7 +38,7 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/risk-warning/task/tasks", method = RequestMethod.GET)
-    public List<Task> getTasks() {
-        return taskService.getTasks();
+    public PageInfo<Task> getTasks(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return taskService.getTasks(pageNum, pageSize);
     }
 }

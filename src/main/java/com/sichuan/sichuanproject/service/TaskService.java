@@ -1,5 +1,6 @@
 package com.sichuan.sichuanproject.service;
 
+import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.domain.Task;
 import com.sichuan.sichuanproject.dto.TaskClassifyDTO;
 import com.sichuan.sichuanproject.dto.TaskDetailDTO;
@@ -43,9 +44,11 @@ public interface TaskService {
     /**
      * 获取任务信息
      *
+     * @param pageNum
+     * @param pageSize
      * @return
      */
-    List<Task> getTasks();
+    PageInfo<Task> getTasks(Integer pageNum, Integer pageSize);
 
     /**
      * 任务状态通知
