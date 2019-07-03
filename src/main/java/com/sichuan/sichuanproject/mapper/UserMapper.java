@@ -76,6 +76,6 @@ public interface UserMapper {
      * @param orgId
      * @return
      */
-    @Select("select * from r_user_and_role ur,r_role_and_menu rm,menu_info m where ur.role_code=rm.role_code and rm.menu_id=m.menu_id and ur.user_id=#{userId} and ur.org_id=#{orgId}")
+    @Select("select * from r_user_and_role ur,r_role_and_menu rm,menu_info m where ur.role_code=rm.role_code and rm.menu_id=m.menu_id and ur.user_id=#{userId} and rm.org_id=#{orgId}")
     List<Menu> getMenuByUserId(@Param("userId") Long userId, @Param("orgId") Long orgId);
 }

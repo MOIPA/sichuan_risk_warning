@@ -30,7 +30,7 @@ public interface WarningModelMapper {
      *
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code order by create_time desc")
     List<WarningModelDTO> getWarningModels();
 
     /**
@@ -39,7 +39,7 @@ public interface WarningModelMapper {
      * @param name
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.name like concat('%',#{name},'%')")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.name like concat('%',#{name},'%') order by create_time desc")
     List<WarningModelDTO> getWarningModelByName(@Param("name") String name);
 
     /**
@@ -59,7 +59,7 @@ public interface WarningModelMapper {
      *
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.status =1")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.status =1 order by create_time desc")
     List<WarningModelDTO> getUnderReviewWarningModel();
 
     /**
@@ -68,8 +68,25 @@ public interface WarningModelMapper {
      * @param name
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.status =1 and wm.name like concat('%',#{name},'%')")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.status =1 and wm.name like concat('%',#{name},'%') order by create_time desc")
     List<WarningModelDTO> getUnderReviewWarningModelByName(@Param("name") String name);
+
+    /**
+     * 查找审批通过的预警模型
+     *
+     * @return
+     */
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4) order by create_time desc")
+    List<WarningModelDTO> getReviewedWarningModel();
+
+    /**
+     * 按照名称查找审批通过的预警模型
+     *
+     * @param name
+     * @return
+     */
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4) and wm.name like concat('%',#{name},'%') order by create_time desc")
+    List<WarningModelDTO> getReviewedWarningModelByName(@Param("name") String name);
 
     /**
      * 审批预警模型
@@ -99,4 +116,12 @@ public interface WarningModelMapper {
     @Update("update warning_model set status = 5 where id =#{warningModelId} and status =4")
     Integer closeWarningModel(@Param("warningModelId") Long warningModelId);
 
+    /**
+     * 删除模型
+     *
+     * @param warningModelId
+     * @return
+     */
+    @Delete("delete from warning_model where id =#{warningModelId} and status=5")
+    Integer deleteWarningModel(@Param("warningModelId") Long warningModelId);
 }

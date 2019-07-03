@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class TaskStatusForm {
-    private String taskNumber;
-    private Integer status;
+    private String taskCode;
+    private Integer taskStatus;
+    private String message;
 }

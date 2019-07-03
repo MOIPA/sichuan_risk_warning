@@ -1,23 +1,26 @@
-package com.sichuan.sichuanproject.form;
+package com.sichuan.sichuanproject.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
+
 
 /**
  * @author
  */
 
 @Data
-public class AddTaskForm {
+public class AddTaskDTO {
 
-    @NotBlank(message = "任务名称不能为空")
     private String taskName;
+
+    private String applicationCode;
 
     private String levelId;
 
     private String taskTimeLimit;
+
+    private String classId;
 
     private String taskExplain;
 
@@ -26,4 +29,8 @@ public class AddTaskForm {
     private String launchDepartmentName;
 
     private String createUserName;
+
+    private List<AttachmentDTO> attachmentDTOList;
+
+    private List<DistributeDepartmentDTO> distributeDepartmentDTOList;
 }

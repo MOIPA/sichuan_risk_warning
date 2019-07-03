@@ -36,10 +36,10 @@ public interface TaskService {
     /**
      * 获取任务详情
      *
-     * @param taskNumber
+     * @param taskCode
      * @return
      */
-    TaskDetailDTO getTaskDetail(String taskNumber);
+    TaskDetailDTO getTaskDetail(String taskCode);
 
     /**
      * 获取任务信息

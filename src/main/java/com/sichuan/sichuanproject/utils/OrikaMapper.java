@@ -1,10 +1,9 @@
 package com.sichuan.sichuanproject.utils;
 
-import com.sichuan.sichuanproject.domain.Menu;
-import com.sichuan.sichuanproject.domain.Organization;
-import com.sichuan.sichuanproject.domain.WarningModel;
+import com.sichuan.sichuanproject.domain.*;
+import com.sichuan.sichuanproject.dto.AddTaskDTO;
 import com.sichuan.sichuanproject.dto.WarningModelDTO;
-import com.sichuan.sichuanproject.form.WarningModelForm;
+import com.sichuan.sichuanproject.form.*;
 import com.sichuan.sichuanproject.vo.MenuInfoVO;
 import com.sichuan.sichuanproject.vo.OrganizationVO;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
@@ -29,6 +28,10 @@ public class OrikaMapper {
                 .byDefault().register();
         mapperFactory.classMap(Menu.class, MenuInfoVO.class).field("parentMenu", "parentMenuId")
                 .byDefault().register();
+        mapperFactory.classMap(RiskFeatureBasicInfoForm.class, RiskFeatureBasicInfo.class);
+        mapperFactory.classMap(DangerousChemicalForm.class, DangerousChemical.class);
+        mapperFactory.classMap(WarningModelRuleForm.class, WarningModelRule.class);
+        mapperFactory.classMap(AddTaskForm.class, AddTaskDTO.class);
 
     }
 

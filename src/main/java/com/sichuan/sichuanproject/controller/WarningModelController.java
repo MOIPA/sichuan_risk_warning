@@ -1,9 +1,7 @@
 package com.sichuan.sichuanproject.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.sichuan.sichuanproject.form.ApprovalWarningModelForm;
-import com.sichuan.sichuanproject.form.ModifyWarningModelForm;
-import com.sichuan.sichuanproject.form.WarningModelForm;
+import com.sichuan.sichuanproject.form.*;
 import com.sichuan.sichuanproject.service.WarningModelService;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +50,16 @@ public class WarningModelController {
         return warningModelService.getUnderReviewWarningModelByName(name, pageNum, pageSize);
     }
 
+    @RequestMapping(value = "/risk-warning/warning-model/get/reviewed", method = RequestMethod.GET)
+    public PageInfo<WarningModelVO> getReviewedWarningModel(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getReviewedWarningModel(pageNum, pageSize);
+    }
+
+    @RequestMapping(value = "/risk-warning/warning-model/get/reviewed/name", method = RequestMethod.GET)
+    public PageInfo<WarningModelVO> getReviewedWarningModelByName(@RequestParam(value = "name") String name, @RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return warningModelService.getReviewedWarningModelByName(name, pageNum, pageSize);
+    }
+
     @RequestMapping(value = "/risk-warning/warning-model/approval", method = RequestMethod.POST)
     public Integer approvalWarningModel(@RequestBody ApprovalWarningModelForm approvalWarningModelForm) {
         return warningModelService.approvalWarningModel(approvalWarningModelForm);
@@ -65,6 +73,21 @@ public class WarningModelController {
     @RequestMapping(value = "/risk-warning/warning-model/close/{warningModelId}", method = RequestMethod.POST)
     public Integer closeWarningModel(@PathVariable(value = "warningModelId") Long warningModelId) {
         return warningModelService.closeWarningModel(warningModelId);
+    }
+
+    @RequestMapping(value = "/risk-warning/warning-model/delete/{warningModelId}", method = RequestMethod.POST)
+    public Integer deleteWarningModel(@PathVariable(value = "warningModelId") Long warningModelId) {
+        return warningModelService.deleteWarningModel(warningModelId);
+    }
+
+    @RequestMapping(value = "/risk-warning/warning-model/rule/set", method = RequestMethod.POST)
+    public Integer setWarningModelRule(@RequestBody @Valid WarningModelRuleForm warningModelRuleForm) {
+        return warningModelService.setWarningModelRule(warningModelRuleForm);
+    }
+
+    @RequestMapping(value = "/risk-warning/warning-model/rule/modify", method = RequestMethod.POST)
+    public Integer modifyWarningModelRule(@RequestBody ModifyWarningModelRuleForm modifyWarningModelRuleForm) {
+        return warningModelService.modifyWarningModelRule(modifyWarningModelRuleForm);
     }
 
 }

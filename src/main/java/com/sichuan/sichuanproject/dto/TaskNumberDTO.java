@@ -8,5 +8,6 @@ import lombok.Data;
 
 @Data
 public class TaskNumberDTO {
-    private String taskNumber;
+    private String taskCode;
+    private String message;
 }

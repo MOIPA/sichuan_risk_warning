@@ -32,6 +32,7 @@ public class UserController {
             UserInfoDTO userInfoDTO = userService.getUserInfo(userAccessTokenDTO.getAccess_token());
             UserInfoVO userInfoVO = new UserInfoVO();
             userInfoVO.setUserId(Long.valueOf(userInfoDTO.getUuid()));
+            userInfoVO.setUserName(userInfoDTO.getUserName());
             userInfoVO.setOrgId(Long.valueOf(userInfoDTO.getOrgId()));
 
             return userInfoVO;

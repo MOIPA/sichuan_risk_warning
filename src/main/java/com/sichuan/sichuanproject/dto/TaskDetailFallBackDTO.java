@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class TaskDetailFallBackDTO {
-    private Integer resultCode;
+    private String resultCode;
     private TaskDetailDTO resultData;
     private String resultMsg;
 }

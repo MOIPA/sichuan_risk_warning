@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class TaskStatusFallBackDTO {
-    private String taskNumber;
-    private String message;
+    private String taskCode;
+    private String taskMessage;
+    private Boolean stauts;
 }

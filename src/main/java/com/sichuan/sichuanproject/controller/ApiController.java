@@ -1,20 +1,17 @@
 package com.sichuan.sichuanproject.controller;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.sichuan.sichuanproject.config.DataChangeNoticeType;
+import com.sichuan.sichuanproject.domain.RiskResult;
 import com.sichuan.sichuanproject.dto.*;
+import com.sichuan.sichuanproject.form.DangerousChemicalForm;
 import com.sichuan.sichuanproject.form.DataChangeNoticeForm;
+import com.sichuan.sichuanproject.form.RiskFeatureBasicInfoForm;
 import com.sichuan.sichuanproject.form.TaskStatusForm;
-import com.sichuan.sichuanproject.service.OrganizationService;
-import com.sichuan.sichuanproject.service.TaskService;
-import com.sichuan.sichuanproject.service.UserService;
-import javafx.concurrent.Task;
+import com.sichuan.sichuanproject.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +32,12 @@ public class ApiController {
 
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private RiskFeatureService riskFeatureService;
+
+    @Autowired
+    private RiskResultService riskResultService;
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -139,5 +142,20 @@ public class ApiController {
     @RequestMapping(value = "/risk-warning/task-status-notice", method = RequestMethod.POST)
     public TaskStatusFallBackDTO taskStatusNotice(@RequestBody TaskStatusForm taskStatusForm) {
         return taskService.noticeTaskStatus(taskStatusForm);
+    }
+
+    @RequestMapping(value = "/risk-warning/risk-feature/basic-info/add", method = RequestMethod.POST)
+    public String addRiskFeatureBasicInfoBatch(@RequestBody List<RiskFeatureBasicInfoForm> riskFeatureBasicInfoFormList) {
+        return riskFeatureService.addRiskFeatureBasicInfoBatch(riskFeatureBasicInfoFormList);
+    }
+
+    @RequestMapping(value = "/risk-warning/risk-feature/dangerous-chemical/add", method = RequestMethod.POST)
+    public String addDangerousChemicalBatch(@RequestBody List<DangerousChemicalForm> dangerousChemicalFormList) {
+        return riskFeatureService.addDangerousChemicalBatch(dangerousChemicalFormList);
+    }
+
+    @RequestMapping(value = "/risk-warning/risk-result/add", method = RequestMethod.POST)
+    public Integer addRiskResult(@RequestBody RiskResult riskResult) {
+        return riskResultService.addRiskResult(riskResult);
     }
 }

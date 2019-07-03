@@ -1,9 +1,7 @@
 package com.sichuan.sichuanproject.service;
 
 import com.github.pagehelper.PageInfo;
-import com.sichuan.sichuanproject.form.ApprovalWarningModelForm;
-import com.sichuan.sichuanproject.form.ModifyWarningModelForm;
-import com.sichuan.sichuanproject.form.WarningModelForm;
+import com.sichuan.sichuanproject.form.*;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +69,25 @@ public interface WarningModelService {
     PageInfo<WarningModelVO> getUnderReviewWarningModelByName(String name, Integer pageNum, Integer pageSize);
 
     /**
+     * 查找审批通过的模型
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize);
+
+    /**
+     * 按名称查找审批通过的模型
+     *
+     * @param name
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<WarningModelVO> getReviewedWarningModelByName(String name, Integer pageNum, Integer pageSize);
+
+    /**
      * 审批预警模型
      *
      * @param approvalWarningModelForm
@@ -94,4 +111,27 @@ public interface WarningModelService {
      */
     Integer closeWarningModel(Long warningModelId);
 
+    /**
+     * 删除模型
+     *
+     * @param warningModelId
+     * @return
+     */
+    Integer deleteWarningModel(Long warningModelId);
+
+    /**
+     * 设置模型规则
+     *
+     * @param warningModelRuleForm
+     * @return
+     */
+    Integer setWarningModelRule(WarningModelRuleForm warningModelRuleForm);
+
+    /**
+     * 修改模型规则
+     *
+     * @param modifyWarningModelRuleForm
+     * @return
+     */
+    Integer modifyWarningModelRule(ModifyWarningModelRuleForm modifyWarningModelRuleForm);
 }

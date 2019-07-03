@@ -33,8 +33,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/risk-warning/task/detail", method = RequestMethod.GET)
-    public TaskDetailDTO getTaskDetail(@RequestParam(value = "taskNumber") String taskNumber) {
-        return taskService.getTaskDetail(taskNumber);
+    public TaskDetailDTO getTaskDetail(@RequestParam(value = "taskCode") String taskCode) {
+        return taskService.getTaskDetail(taskCode);
     }
 
     @RequestMapping(value = "/risk-warning/task/tasks", method = RequestMethod.GET)
