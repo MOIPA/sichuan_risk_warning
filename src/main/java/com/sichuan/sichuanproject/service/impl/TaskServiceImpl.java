@@ -80,7 +80,7 @@ public class TaskServiceImpl implements TaskService {
     public TaskStatusFallBackDTO noticeTaskStatus(TaskStatusForm taskStatusForm) {
         TaskStatusFallBackDTO taskStatusFallBackDTO = new TaskStatusFallBackDTO();
         taskStatusFallBackDTO.setTaskCode(taskStatusForm.getTaskCode());
-        int result = taskMapper.updateTask(taskStatusForm.getTaskCode(), taskStatusForm.getTaskStatus());
+        int result = taskMapper.updateTask(taskStatusForm.getTaskCode(), Integer.valueOf(taskStatusForm.getTaskStatus()));
         if (result > 0) {
             taskStatusFallBackDTO.setTaskMessage("成功");
             taskStatusFallBackDTO.setStauts(true);

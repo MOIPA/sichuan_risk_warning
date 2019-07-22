@@ -34,6 +34,15 @@ public interface WarningModelMapper {
     List<WarningModelDTO> getWarningModels();
 
     /**
+     * 根据状态查找预警模型列表
+     *
+     * @param status
+     * @return
+     */
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.status=#{status} and wm.org_code = org.org_code order by create_time desc")
+    List<WarningModelDTO> getWarningMdoelsByStatus(@Param("status") Integer status);
+
+    /**
      * 根据预警模型名称搜索
      *
      * @param name
@@ -76,8 +85,17 @@ public interface WarningModelMapper {
      *
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4) order by create_time desc")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4 or wm.status=5) order by create_time desc")
     List<WarningModelDTO> getReviewedWarningModel();
+
+    /**
+     * 按照状态查找审批通过的预警模型
+     *
+     * @param status
+     * @return
+     */
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and wm.status =#{status} order by create_time desc")
+    List<WarningModelDTO> getReviewedWarningModelByStatus(@Param("status") Integer status);
 
     /**
      * 按照名称查找审批通过的预警模型
@@ -85,7 +103,7 @@ public interface WarningModelMapper {
      * @param name
      * @return
      */
-    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4) and wm.name like concat('%',#{name},'%') order by create_time desc")
+    @Select("select wm.id,wm.name,wm.type,org.org_name,wm.creator_id,wm.create_time,wm.status from warning_model wm,organization_info org where wm.org_code = org.org_code and (wm.status =3 or wm.status =4 or wm.status =5) and wm.name like concat('%',#{name},'%') order by create_time desc")
     List<WarningModelDTO> getReviewedWarningModelByName(@Param("name") String name);
 
     /**
@@ -104,7 +122,7 @@ public interface WarningModelMapper {
      * @param warningModelId
      * @return
      */
-    @Update("update warning_model set status = 4 where id =#{warningModelId} and status =3")
+    @Update("update warning_model set status = 4 where id =#{warningModelId} and (status =3 or status =5)")
     Integer startWarningModel(@Param("warningModelId") Long warningModelId);
 
     /**

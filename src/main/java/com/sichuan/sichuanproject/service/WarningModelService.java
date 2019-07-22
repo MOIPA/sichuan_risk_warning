@@ -27,9 +27,10 @@ public interface WarningModelService {
      *
      * @param pageNum
      * @param pageSize
+     * @param status
      * @return
      */
-    PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize);
+    PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize, Integer status);
 
     /**
      * 按名称搜索风险预警模型
@@ -73,9 +74,10 @@ public interface WarningModelService {
      *
      * @param pageNum
      * @param pageSize
+     * @param status
      * @return
      */
-    PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize);
+    PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize, Integer status);
 
     /**
      * 按名称查找审批通过的模型

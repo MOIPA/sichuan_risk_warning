@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,9 +51,14 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize) {
+    public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize, Integer status) {
         PageHelper.startPage(pageNum,pageSize);
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getWarningModels();
+        List<WarningModelDTO> warningModelDTOList = new ArrayList<>();
+        if (status.equals(0)) {
+            warningModelDTOList = warningModelMapper.getWarningModels();
+        }else {
+            warningModelDTOList = warningModelMapper.getWarningMdoelsByStatus(status);
+        }
         PageInfo pageInfo = new PageInfo(warningModelDTOList);
         List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) ->(WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
         pageInfo.setList(warningModelVOList);
@@ -96,9 +102,15 @@ public class WarningModelServiceImpl implements WarningModelService {
     }
 
     @Override
-    public PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize) {
+    public PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize, Integer status) {
         PageHelper.startPage(pageNum, pageSize);
-        List<WarningModelDTO> warningModelDTOList = warningModelMapper.getReviewedWarningModel();
+        List<WarningModelDTO> warningModelDTOList = new ArrayList<>();
+        if (status.equals(0)) {
+            warningModelDTOList = warningModelMapper.getReviewedWarningModel();
+        }else {
+            warningModelDTOList = warningModelMapper.getReviewedWarningModelByStatus(status);
+        }
+
         PageInfo pageInfo = new PageInfo(warningModelDTOList);
         List<WarningModelVO> warningModelVOList = warningModelDTOList.stream().map((e) ->(WarningModelVO) OrikaMapper.map(e, WarningModelVO.class)).collect(Collectors.toList());
         pageInfo.setList(warningModelVOList);

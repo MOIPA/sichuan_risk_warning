@@ -26,8 +26,8 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get", method = RequestMethod.GET)
-    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
-        return warningModelService.getWarningModel(pageNum, pageSize);
+    public PageInfo<WarningModelVO> getWarningModels(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize, @RequestParam(value = "status") Integer status) {
+        return warningModelService.getWarningModel(pageNum, pageSize, status);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/name", method = RequestMethod.GET)
@@ -51,8 +51,8 @@ public class WarningModelController {
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/reviewed", method = RequestMethod.GET)
-    public PageInfo<WarningModelVO> getReviewedWarningModel(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
-        return warningModelService.getReviewedWarningModel(pageNum, pageSize);
+    public PageInfo<WarningModelVO> getReviewedWarningModel(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize, @RequestParam(value = "status") Integer status) {
+        return warningModelService.getReviewedWarningModel(pageNum, pageSize, status);
     }
 
     @RequestMapping(value = "/risk-warning/warning-model/get/reviewed/name", method = RequestMethod.GET)
