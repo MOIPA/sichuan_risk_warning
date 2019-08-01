@@ -3,6 +3,7 @@ package com.sichuan.sichuanproject.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.config.BaseResult;
+import com.sichuan.sichuanproject.config.DsEnum;
 import com.sichuan.sichuanproject.config.WarningModelStatus;
 import com.sichuan.sichuanproject.domain.WarningModel;
 import com.sichuan.sichuanproject.domain.WarningModelRule;
@@ -11,6 +12,7 @@ import com.sichuan.sichuanproject.dto.WarningModelDTO;
 import com.sichuan.sichuanproject.form.*;
 import com.sichuan.sichuanproject.mapper.primary.WarningModelMapper;
 import com.sichuan.sichuanproject.mapper.primary.WarningModelRuleMapper;
+import com.sichuan.sichuanproject.service.DS;
 import com.sichuan.sichuanproject.service.WarningModelService;
 import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.WarningModelVO;
@@ -38,6 +40,7 @@ public class WarningModelServiceImpl implements WarningModelService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer addWarningModel(WarningModelForm warningModelForm) {
         WarningModel warningModel = (WarningModel) OrikaMapper.map(warningModelForm, WarningModel.class);
@@ -49,6 +52,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return warningModelMapper.addWarningModel(warningModel);
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getWarningModel(Integer pageNum, Integer pageSize, Integer status) {
         PageHelper.startPage(pageNum,pageSize);
@@ -64,6 +68,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getWarningModelByName(String name, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
@@ -75,11 +80,13 @@ public class WarningModelServiceImpl implements WarningModelService {
 
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer modifyWarningModel(ModifyWarningModelForm modifyWarningModelForm) {
         return warningModelMapper.updateWarningModel(modifyWarningModelForm.getWarningModelId(), modifyWarningModelForm.getName(), modifyWarningModelForm.getType(), modifyWarningModelForm.getOrgCode());
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getUnderReviewWarningModel(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -90,6 +97,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getUnderReviewWarningModelByName(String name, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -100,6 +108,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getReviewedWarningModel(Integer pageNum, Integer pageSize, Integer status) {
         PageHelper.startPage(pageNum, pageSize);
@@ -116,6 +125,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningModelVO> getReviewedWarningModelByName(String name, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -126,12 +136,14 @@ public class WarningModelServiceImpl implements WarningModelService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer approvalWarningModel(ApprovalWarningModelForm approvalWarningModelForm) {
         Integer result = warningModelMapper.approvalWarningModel(approvalWarningModelForm.getWarningModelId(), approvalWarningModelForm.getStatus());
         return result;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer startWarningModel(Long warningModelId) {
         Integer result = warningModelMapper.startWarningModel(warningModelId);
@@ -153,6 +165,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return result;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer closeWarningModel(Long warningModelId) {
         Integer result = warningModelMapper.closeWarningModel(warningModelId);
@@ -161,6 +174,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return result;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer deleteWarningModel(Long warningModelId) {
         Integer result = warningModelMapper.deleteWarningModel(warningModelId);
@@ -169,6 +183,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return result;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer setWarningModelRule(WarningModelRuleForm warningModelRuleForm) {
         WarningModelRule warningModelRule = (WarningModelRule) OrikaMapper.map(warningModelRuleForm, WarningModelRule.class);
@@ -177,6 +192,7 @@ public class WarningModelServiceImpl implements WarningModelService {
         return result;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
     @Override
     public Integer modifyWarningModelRule(ModifyWarningModelRuleForm modifyWarningModelRuleForm) {
         Integer result = warningModelRuleMapper.updateWarningModelRule(modifyWarningModelRuleForm.getWarningModelId(), modifyWarningModelRuleForm.getHighRisk(), modifyWarningModelRuleForm.getMiddleHighRisk(), modifyWarningModelRuleForm.getMiddleRisk(), modifyWarningModelRuleForm.getLowRisk());

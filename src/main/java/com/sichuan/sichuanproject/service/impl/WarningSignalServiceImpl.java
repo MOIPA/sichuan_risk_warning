@@ -35,7 +35,7 @@ public class WarningSignalServiceImpl implements WarningSignalService {
         return result;
     }
 
-    @DS(value = DsEnum.FIRST_DS)
+//    @DS(value = DsEnum.FIRST_DS)
     @Override
     public PageInfo<WarningSignalVO> getWarningSignal(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);

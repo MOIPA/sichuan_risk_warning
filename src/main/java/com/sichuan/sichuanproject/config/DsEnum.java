@@ -19,7 +19,7 @@ public enum DsEnum {
     private String baseid;
     private String message;
 
-    public static DsEnum createDSByCid(String cid) {
+    public static DsEnum createDSBybaseid(String cid) {
         for(DsEnum val : DsEnum.values()) {
             if(val.getBaseid().equalsIgnoreCase(cid)) {
                 return val;

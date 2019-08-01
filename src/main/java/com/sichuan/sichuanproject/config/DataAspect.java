@@ -42,8 +42,8 @@ public class DataAspect {
                 if(DsEnum.AUTO_DS == annotation.value()) {
                     //预留功能 获取baseid的值
                     //Object[] args = point.getArgs();
-                    String cid = "200";
-                    dsEnum = DsEnum.createDSByCid(cid);
+                    String baseid = "200";
+                    dsEnum = DsEnum.createDSBybaseid(baseid);
                 }
                 // 取出注解中的数据源名
                 dsEnum = annotation.value();
