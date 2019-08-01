@@ -2,6 +2,7 @@ package com.sichuan.sichuanproject.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.domain.WarningSignal;
+import com.sichuan.sichuanproject.dto.StaRewiDTO;
 import com.sichuan.sichuanproject.service.WarningSignalService;
 import com.sichuan.sichuanproject.vo.WarningSignalVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,16 @@ public class WarningSignalController {
     public PageInfo<WarningSignalVO> getWarningSignal(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
         return warningSignalService.getWarningSignal(pageNum, pageSize);
     }
+
+//    @RequestMapping(value="/risk-warning/signal/push",method = RequestMethod.GET)
+//    public List<StaRewiDTO> pushWarningSingal(){
+//        return warningSignalService.getStaRewi();
+//    }
+
+    @RequestMapping(value="/risk-warning/signal/rewi/get",method = RequestMethod.GET)
+    public List<StaRewiDTO> pushWarningSingal(){
+        return warningSignalService.getStaRewi();
+    }
+
+
 }

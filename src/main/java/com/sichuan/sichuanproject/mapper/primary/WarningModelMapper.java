@@ -1,4 +1,4 @@
-package com.sichuan.sichuanproject.mapper;
+package com.sichuan.sichuanproject.mapper.primary;
 
 import com.sichuan.sichuanproject.domain.WarningModel;
 import com.sichuan.sichuanproject.dto.WarningModelDTO;

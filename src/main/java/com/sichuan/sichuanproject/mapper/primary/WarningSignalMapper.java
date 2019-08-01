@@ -1,4 +1,4 @@
-package com.sichuan.sichuanproject.mapper;
+package com.sichuan.sichuanproject.mapper.primary;
 
 import com.sichuan.sichuanproject.domain.WarningSignal;
 import com.sichuan.sichuanproject.vo.WarningSignalVO;
@@ -33,4 +33,5 @@ public interface WarningSignalMapper {
      */
     @Select("select * from JG_FXYJ_WARNING_SIGNAL s,warning_model wm where s.Fxyj_Model_Id=wm.id order by Fxyj_Time desc")
     List<WarningSignalVO> getWarningSignal();
+
 }

@@ -1,4 +1,4 @@
-package com.sichuan.sichuanproject.mapper;
+package com.sichuan.sichuanproject.mapper.primary;
 
 import com.sichuan.sichuanproject.domain.Menu;
 import org.apache.ibatis.annotations.*;

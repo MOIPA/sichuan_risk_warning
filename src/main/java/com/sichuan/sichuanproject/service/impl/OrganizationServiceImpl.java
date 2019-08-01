@@ -3,13 +3,12 @@ package com.sichuan.sichuanproject.service.impl;
 import com.sichuan.sichuanproject.config.OperationType;
 import com.sichuan.sichuanproject.domain.Organization;
 import com.sichuan.sichuanproject.dto.OrganizationInfoDTO;
-import com.sichuan.sichuanproject.mapper.OrganizationMapper;
+import com.sichuan.sichuanproject.mapper.primary.OrganizationMapper;
 import com.sichuan.sichuanproject.service.OrganizationService;
 import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.OrganizationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;

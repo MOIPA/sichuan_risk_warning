@@ -2,8 +2,13 @@ package com.sichuan.sichuanproject.service;
 
 import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.domain.WarningSignal;
+import com.sichuan.sichuanproject.dto.StaRewiDTO;
+import com.sichuan.sichuanproject.dto.WarningModelDTO;
+import com.sichuan.sichuanproject.vo.WarningModelVO;
 import com.sichuan.sichuanproject.vo.WarningSignalVO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -29,4 +34,9 @@ public interface WarningSignalService {
      * @return
      */
     PageInfo<WarningSignalVO> getWarningSignal(Integer pageNum, Integer pageSize);
+
+    /**
+     * 查询推送数据库数据，可以用于以后差量对比更新
+     */
+    List<StaRewiDTO> getStaRewi();
 }

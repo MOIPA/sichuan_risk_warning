@@ -6,7 +6,7 @@ import com.sichuan.sichuanproject.domain.Task;
 import com.sichuan.sichuanproject.dto.*;
 import com.sichuan.sichuanproject.form.AddTaskForm;
 import com.sichuan.sichuanproject.form.TaskStatusForm;
-import com.sichuan.sichuanproject.mapper.TaskMapper;
+import com.sichuan.sichuanproject.mapper.primary.TaskMapper;
 import com.sichuan.sichuanproject.service.TaskService;
 import com.sichuan.sichuanproject.utils.OrikaMapper;
 import lombok.extern.slf4j.Slf4j;

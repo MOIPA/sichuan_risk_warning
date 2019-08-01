@@ -2,7 +2,7 @@ package com.sichuan.sichuanproject.service.impl;
 
 import com.sichuan.sichuanproject.domain.*;
 import com.sichuan.sichuanproject.dto.*;
-import com.sichuan.sichuanproject.mapper.*;
+import com.sichuan.sichuanproject.mapper.primary.*;
 import com.sichuan.sichuanproject.service.InitializationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

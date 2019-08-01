@@ -1,6 +1,5 @@
 package com.sichuan.sichuanproject.service.impl;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sichuan.sichuanproject.config.BaseResult;
@@ -10,8 +9,8 @@ import com.sichuan.sichuanproject.domain.WarningModelRule;
 import com.sichuan.sichuanproject.dto.ScheduleJobDTO;
 import com.sichuan.sichuanproject.dto.WarningModelDTO;
 import com.sichuan.sichuanproject.form.*;
-import com.sichuan.sichuanproject.mapper.WarningModelMapper;
-import com.sichuan.sichuanproject.mapper.WarningModelRuleMapper;
+import com.sichuan.sichuanproject.mapper.primary.WarningModelMapper;
+import com.sichuan.sichuanproject.mapper.primary.WarningModelRuleMapper;
 import com.sichuan.sichuanproject.service.WarningModelService;
 import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.WarningModelVO;

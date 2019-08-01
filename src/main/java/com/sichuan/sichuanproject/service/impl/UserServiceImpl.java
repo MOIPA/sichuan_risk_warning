@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sichuan.sichuanproject.config.OperationType;
 import com.sichuan.sichuanproject.domain.*;
 import com.sichuan.sichuanproject.dto.*;
-import com.sichuan.sichuanproject.mapper.*;
+import com.sichuan.sichuanproject.mapper.primary.*;
 import com.sichuan.sichuanproject.service.UserService;
 import com.sichuan.sichuanproject.utils.OrikaMapper;
 import com.sichuan.sichuanproject.vo.MenuInfoVO;
