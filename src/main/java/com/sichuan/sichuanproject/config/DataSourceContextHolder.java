@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author: tr
- * @Date: 2019-8-01
+ * @Date: 2019-08-01
  * @Description:设置线程安全类，存放数据库源标识(String)，用于动态切换数据库源
  */
 @Slf4j

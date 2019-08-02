@@ -80,6 +80,11 @@ public class WarningModelController {
         return warningModelService.deleteWarningModel(warningModelId);
     }
 
+    @RequestMapping(value = "/risk-warning/warning-model/soft-delete/{warningModelId}", method = RequestMethod.POST)
+    public Integer softDeleteWarningModel(@PathVariable(value = "warningModelId") Long warningModelId) {
+        return warningModelService.softDeleteWarningModel(warningModelId);
+    }
+
     @RequestMapping(value = "/risk-warning/warning-model/rule/set", method = RequestMethod.POST)
     public Integer setWarningModelRule(@RequestBody @Valid WarningModelRuleForm warningModelRuleForm) {
         return warningModelService.setWarningModelRule(warningModelRuleForm);

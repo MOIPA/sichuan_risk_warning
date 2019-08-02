@@ -142,4 +142,12 @@ public interface WarningModelMapper {
      */
     @Delete("delete from warning_model where id =#{warningModelId} and status=5")
     Integer deleteWarningModel(@Param("warningModelId") Long warningModelId);
+
+    /**
+     * 删除模型 软删除
+     * @param warningModelId
+     * @return
+     */
+    @Update("update warning_model set status = 9 where id =#{warningModelId} and status =5")
+    Integer softDeleteWarningModel(Long warningModelId);
 }

@@ -38,5 +38,7 @@ public interface WarningSignalService {
     /**
      * 查询推送数据库数据，可以用于以后差量对比更新
      */
-    List<StaRewiDTO> getStaRewi();
+    List<StaRewiDTO> getStaRewiFromLocal();
+
+    Integer pushData(List<StaRewiDTO> staRewi);
 }

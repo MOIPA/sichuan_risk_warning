@@ -10,9 +10,11 @@ import com.sichuan.sichuanproject.mapper.second.StaRewiMapper;
 import com.sichuan.sichuanproject.service.DS;
 import com.sichuan.sichuanproject.service.WarningSignalService;
 import com.sichuan.sichuanproject.vo.WarningSignalVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +22,7 @@ import java.util.List;
  */
 
 @Component
+@Slf4j
 public class WarningSignalServiceImpl implements WarningSignalService {
 
     @Autowired
@@ -45,9 +48,19 @@ public class WarningSignalServiceImpl implements WarningSignalService {
         return pageInfo;
     }
 
+    @DS(value = DsEnum.FIRST_DS)
+    @Override
+    public List<StaRewiDTO> getStaRewiFromLocal() {
+        return staRewiMapper.getPushData();
+    }
+
     @DS(value = DsEnum.SECOND_DS)
     @Override
-    public List<StaRewiDTO> getStaRewi() {
-        return staRewiMapper.getWarningSignal();
+    public Integer pushData(List<StaRewiDTO> staRewi) {
+        Integer count = 0;
+        for (StaRewiDTO d : staRewi) {
+            count += staRewiMapper.pushData(d);
+        }
+        return count;
     }
 }

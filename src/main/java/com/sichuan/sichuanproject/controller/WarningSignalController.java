@@ -34,12 +34,17 @@ public class WarningSignalController {
 
 //    @RequestMapping(value="/risk-warning/signal/push",method = RequestMethod.GET)
 //    public List<StaRewiDTO> pushWarningSingal(){
-//        return warningSignalService.getStaRewi();
+//        return warningSignalService.getStaRewiFromLocal();
 //    }
 
+    @RequestMapping(value="/risk-warning/signal/rewi/push",method = RequestMethod.GET)
+    public Integer pushWarningSingal(){
+        List<StaRewiDTO> staRewiFromLocal = warningSignalService.getStaRewiFromLocal();
+        return warningSignalService.pushData(staRewiFromLocal);
+    }
     @RequestMapping(value="/risk-warning/signal/rewi/get",method = RequestMethod.GET)
-    public List<StaRewiDTO> pushWarningSingal(){
-        return warningSignalService.getStaRewi();
+    public List<StaRewiDTO> getWarningSingal(){
+        return warningSignalService.getStaRewiFromLocal();
     }
 
 

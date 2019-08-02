@@ -1,6 +1,7 @@
 package com.sichuan.sichuanproject.mapper.primary;
 
 import com.sichuan.sichuanproject.domain.WarningSignal;
+import com.sichuan.sichuanproject.dto.StaRewiDTO;
 import com.sichuan.sichuanproject.vo.WarningSignalVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

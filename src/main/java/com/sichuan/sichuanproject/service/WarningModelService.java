@@ -136,4 +136,11 @@ public interface WarningModelService {
      * @return
      */
     Integer modifyWarningModelRule(ModifyWarningModelRuleForm modifyWarningModelRuleForm);
+
+    /**
+     * 软删除模型 设置状态9
+     * @param warningModelId
+     * @return
+     */
+    Integer softDeleteWarningModel(Long warningModelId);
 }

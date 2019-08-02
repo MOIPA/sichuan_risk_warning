@@ -1,12 +1,14 @@
 package com.sichuan.sichuanproject.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 @Data
 public class StaRewiDTO {
+
     private String id;
 
     private String areaCode;
@@ -23,9 +25,9 @@ public class StaRewiDTO {
 
     private String riskField;
 
-    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
-    private Timestamp FXYJXT;
+    private String FXYJXT = "FXYJXT";
 
+//    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private String staData;
 
 }

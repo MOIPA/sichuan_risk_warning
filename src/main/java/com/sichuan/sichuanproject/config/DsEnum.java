@@ -2,7 +2,7 @@ package com.sichuan.sichuanproject.config;
 
 /**
  * @author: tr
- * @Date: 2019-8-01
+ * @Date: 2019-08-01
  * @Description:数据库枚举类型，存放数据库标识
  */
 public enum DsEnum {

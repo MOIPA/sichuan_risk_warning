@@ -27,7 +27,12 @@ public enum WarningModelStatus {
     /**
      * 已关闭
      */
-    CLOSED(5);
+    CLOSED(5),
+
+    /**
+     * 已删除
+     */
+    DELETED(9);
 
     private Integer index;
 

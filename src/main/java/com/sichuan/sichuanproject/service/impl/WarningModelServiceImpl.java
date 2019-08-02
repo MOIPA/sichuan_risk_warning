@@ -199,4 +199,12 @@ public class WarningModelServiceImpl implements WarningModelService {
         return result;
     }
 
+    @Override
+    public Integer softDeleteWarningModel(Long warningModelId) {
+        Integer result = warningModelMapper.softDeleteWarningModel(warningModelId);
+        restTemplate.postForObject("http://59.225.206.13:8761/risk-warning/schedule-job/remove?jobId="+warningModelId,"",BaseResult.class);
+
+        return result;
+    }
+
 }
