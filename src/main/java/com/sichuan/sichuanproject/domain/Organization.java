@@ -19,12 +19,13 @@ public class Organization {
     private Integer isDelete;
     private String updateTime;
     private Integer isParent;
+    private String areaId;
 
     public Organization() {
         //do nothing;
     }
 
-    public Organization(Long orgId, String orgCode, String orgName, String areaCode, String shortName, Long parentOrg, Integer isDelete, String updateTime, Integer isParent) {
+    public Organization(Long orgId,String areaId, String orgCode, String orgName, String areaCode, String shortName, Long parentOrg, Integer isDelete, String updateTime, Integer isParent) {
         this.orgId = orgId;
         this.orgCode = orgCode;
         this.orgName = orgName;
@@ -34,5 +35,6 @@ public class Organization {
         this.isDelete = isDelete;
         this.updateTime = updateTime;
         this.isParent = isParent;
+        this.areaId = areaId;
     }
 }

@@ -79,7 +79,7 @@ public class InitializationServiceImpl implements InitializationService {
 
         List<Organization> organizationList = new ArrayList<>();
         organizationInfoDTOList.forEach((e) ->{
-            Organization organization = new Organization(e.getOrgId(), e.getOrgCode(), e.getOrgName(), e.getAreaCode(), e.getShortName(), e.getParentOrg(), e.getIsDelete(), e.getUpdateTime(), e.getIsParent());
+            Organization organization = new Organization(e.getOrgId(),e.getAreaId(), e.getOrgCode(), e.getOrgName(), e.getAreaCode(), e.getShortName(), e.getParentOrg(), e.getIsDelete(), e.getUpdateTime(), e.getIsParent());
             organizationList.add(organization);
         });
         organizationMapper.insertOrganizationInfoBatch(organizationList);

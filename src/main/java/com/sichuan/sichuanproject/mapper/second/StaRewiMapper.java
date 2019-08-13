@@ -45,7 +45,7 @@ public interface StaRewiMapper {
     /**
      * 推送数据
      */
-    @Insert("insert into STA_REWI_DATA" +
+    @Insert("insert into sta_rewi_data" +
             "(id,area_code,area_name,dept_code,dept_name,risk_count,risk_level,risk_field,sta_data,FXYJXT) " +
             "values(#{id},#{areaCode},#{areaName},#{deptCode},#{deptName},#{riskCount},#{riskLevel},#{riskField},#{staData},#{FXYJXT})")
     Integer pushData(StaRewiDTO staRewi);

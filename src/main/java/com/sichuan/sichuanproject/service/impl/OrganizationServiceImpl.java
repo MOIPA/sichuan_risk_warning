@@ -35,11 +35,12 @@ public class OrganizationServiceImpl implements OrganizationService {
                 organization = organizationMapper.getOrganizationInfoById(organizationInfoDTO.getOrgId());
                 if (organization == null) {
                     //部门不存在，新增部门
-                    Organization newOrganization = new Organization(organizationInfoDTO.getOrgId(), organizationInfoDTO.getOrgCode(), organizationInfoDTO.getOrgName(), organizationInfoDTO.getAreaCode(), organizationInfoDTO.getShortName(), organizationInfoDTO.getParentOrg(), organizationInfoDTO.getIsDelete(), organizationInfoDTO.getUpdateTime(), organizationInfoDTO.getIsParent());
+                    Organization newOrganization = new Organization(organizationInfoDTO.getOrgId(),organizationInfoDTO.getAreaId(), organizationInfoDTO.getOrgCode(), organizationInfoDTO.getOrgName(), organizationInfoDTO.getAreaCode(), organizationInfoDTO.getShortName(), organizationInfoDTO.getParentOrg(), organizationInfoDTO.getIsDelete(), organizationInfoDTO.getUpdateTime(), organizationInfoDTO.getIsParent());
                     num += organizationMapper.insertOrganizationInfo(newOrganization);
                 }else {
                     //部门存在，修改部门信息
-                    Organization updateOrganization = new Organization(organizationInfoDTO.getOrgId(), organizationInfoDTO.getOrgCode(), organizationInfoDTO.getOrgName(), organizationInfoDTO.getAreaCode(), organizationInfoDTO.getShortName(), organizationInfoDTO.getParentOrg(), organizationInfoDTO.getIsDelete(), organizationInfoDTO.getUpdateTime(), organizationInfoDTO.getIsParent());
+                    Organization updateOrganization = new Organization(organizationInfoDTO.getOrgId(), organizationInfoDTO.getAreaId(),organizationInfoDTO.getOrgCode(), organizationInfoDTO.getOrgName(), organizationInfoDTO.getAreaCode(), organizationInfoDTO.getShortName(), organizationInfoDTO.getParentOrg(), organizationInfoDTO.getIsDelete(), organizationInfoDTO.getUpdateTime(), organizationInfoDTO.getIsParent());
+//                    num += organizationMapper.updateOrganizationInfo(updateOrganization.getAreaId(),updateOrganization.getOrgCode(),updateOrganization.getOrgName(),updateOrganization.getAreaCode(),updateOrganization.getShortName(),updateOrganization.getParentOrg(),updateOrganization.getIsDelete(),updateOrganization.getUpdateTime(),updateOrganization.getIsParent(),updateOrganization.getOrgId());
                     num += organizationMapper.updateOrganizationInfo(updateOrganization);
                 }
             }

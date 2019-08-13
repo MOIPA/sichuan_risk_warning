@@ -17,4 +17,5 @@ public class OrganizationInfoDTO {
     private Integer isDelete;
     private String updateTime;
     private Integer isParent;
+    private String areaId;
 }
